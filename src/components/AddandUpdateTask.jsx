@@ -1,7 +1,7 @@
 import React from 'react'
 import * as Yup from "yup";
 import Modal from './Modal';
-import { Formik, Field, Form,ErrorMessage } from "formik";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 import { addDoc, collection, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../config/FirebaseConfig';
 import { toast } from 'react-toastify';
@@ -36,8 +36,8 @@ const AddandUpdateTask = ({ isOpen, onClose, isUpdate, tasks }) => {
         try {
             const taskRef = doc(db, "todotasks", id);
             await updateDoc(taskRef, tasks);
-            toast.success("Task Updated Successfully");
             onClose();
+            toast.success("Task Updated Successfully");
 
         } catch (error) {
             console.log(error);
@@ -48,7 +48,7 @@ const AddandUpdateTask = ({ isOpen, onClose, isUpdate, tasks }) => {
 
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
-            <h3 className='text-center text-xl'>{isUpdate ? "update " : "Create " } Your ToDo</h3>
+            <h3 className='text-center text-xl'>{isUpdate ? "update " : "Create "} Your ToDo</h3>
             <Formik
                 validationSchema={contatSchemaValidation}
                 initialValues={
@@ -96,7 +96,7 @@ const AddandUpdateTask = ({ isOpen, onClose, isUpdate, tasks }) => {
                             </div>
 
                             <div className='flex  items-center my-2 justify-center text-center'>
-                                <button onClick={onClose}  className='submit-btn'>Cancel</button>
+                                <button onClick={onClose} className='submit-btn'>Cancel</button>
                             </div>
                         </div>
                     </div>
